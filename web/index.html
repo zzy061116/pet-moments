@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>宠物朋友圈 · 我家这只今天又干了什么</title>
+  <meta name="description" content="给宠物开一个朋友圈，AI 帮它写文案，隔壁的猫狗来评论区抬杠。" />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="backdrop"></div>
+
+  <div class="phone" id="phone">
+    <div class="screen" id="screen">
+      <div class="loading-screen">
+        <div class="loading-paw">🐾</div>
+        <p>正在打开它的朋友圈…</p>
+      </div>
+    </div>
+
+    <button class="fab" id="fab" hidden>
+      <span class="fab-plus">+</span>
+      <span>替它发一条</span>
+    </button>
+  </div>
+
+  <!-- 发布面板 -->
+  <div class="sheet" id="sheet" hidden>
+    <div class="sheet-mask" data-close></div>
+    <div class="sheet-panel">
+      <div class="sheet-head">
+        <h3>今天它干了什么？</h3>
+        <button class="icon-btn" data-close aria-label="关闭">✕</button>
+      </div>
+
+      <textarea id="eventInput" maxlength="300" placeholder="用大白话写就行，比如：偷吃了半块蛋黄酥，嘴边还留着渣"></textarea>
+
+      <div class="chips" id="eventChips"></div>
+
+      <div class="photo-row">
+        <label class="photo-pick">
+          <span class="photo-icon">📷</span>
+          <span>放张照片<em>可选</em></span>
+          <input type="file" id="fileInput" accept="image/*" />
+        </label>
+        <div class="preview" id="preview" hidden>
+          <img id="previewImg" alt="预览" />
+          <button class="preview-del" id="previewDel" aria-label="移除">✕</button>
+        </div>
+      </div>
+
+      <button class="primary" id="submitPost">让它发出去</button>
+      <p class="hint">AI 会用它自己的口气写，评论区的猫狗都是老熟人了</p>
+    </div>
+  </div>
+
+  <!-- 生成中 -->
+  <div class="bussy" id="bussy" hidden>
+    <div class="bussy-card">
+      <div class="bussy-paw">🐾</div>
+      <p id="bussyText">正在组织语言…</p>
+      <span class="bussy-sub">它一边舔爪子一边想</span>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" hidden></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js" defer></script>
+  <script src="/static/app.js" defer></script>
+</body>
+</html>
